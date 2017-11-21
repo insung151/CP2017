@@ -12,8 +12,7 @@ public class Tester4_1 {
         System.out.println(preorderLetter(r));
         System.out.println(inorderLetter(r));
         System.out.println(postorderLetter(r));
-        System.out.println(r.right.right.character+ " agbs");
-
+//        System.out.println(r.left.left.left.label+ " agbs");
 
     }
 
@@ -39,9 +38,9 @@ public class Tester4_1 {
     public static String postorder(Node4_1 n) {
         String s = "";
         if(n.left != null)
-            s += preorder(n.left);
+            s += postorder(n.left);
         if(n.right != null)
-            s += preorder(n.right);
+            s += postorder(n.right);
         s += n.label;
         return s;
     }
