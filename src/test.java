@@ -1,7 +1,7 @@
 import java.util.Vector;
 
 
-public class Test {
+public class test {
     public static void main(String[] args) {
         System.out.println((3+1+4)%4);
 //        String[] owners = {"Mike", "Billy"};
