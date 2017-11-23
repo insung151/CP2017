@@ -8,7 +8,7 @@ public class Assignment4_1 {
     public Assignment4_1(String line1, String line2) {
         char[] charArr = line1.toCharArray();
         consHelper(charArr, line2);
-        System.out.println(line1);
+//        System.out.println(line1);
     }
     public Node4_1 getRoot() {
         return root;
