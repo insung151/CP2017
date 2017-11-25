@@ -1,8 +1,7 @@
-import java.util.ArrayList;
+//Hwang inseong 2016-16322
 import java.util.LinkedList;
 import java.util.List;
 
-//Hwang inseong 2016-16322
 public class Room {
     //should contains lists of Animals and Foods
     //you can add more fields or methods.

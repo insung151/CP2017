@@ -25,15 +25,19 @@ public class ZooTest {
         Vector<Room> roomVec = new Vector<>();
         Room temp = new Room();
         temp.addAnimal(new Carnivore('c', "Lion", "ID:0001", 2) );
-        temp.addFood( true );
+        temp.addAnimal(new Carnivore('c', "Lion", "ID:0001", 1) );
+        temp.addFood( false );
+        temp.addFood(true);
         roomVec.add(temp);
         Room temp2 = new Room();
         temp2.addAnimal(new Herbivore('H', "cow", "Jow das", 0) );
         temp2.addAnimal(new Omnivore('O', "Homo siphens", "Yeonil Yool(not yeonil yoo)", 1 ));
+        temp2.addAnimal(new Carnivore('c', "Lion", "ID:0001", 2) );
         temp2.addFood(false);
         roomVec.add(temp2);
         Manage runner = new Manage(new ManageInfo(roomVec)); //will be new Manager(); for those prefer default ctor
         Report output = runner.report();
         output.printAll();
+        System.out.println(runner.manageInfo.getRoom(1).getAnimal(1).getSpeciesName());
     }
 }

@@ -1,6 +1,6 @@
+//Hwang inseong 2016-16322
 import java.util.Vector;
 
-//Hwang inseong 2016-16322
 public class Manage {
     //you can add more
     ManageInfo manageInfo;

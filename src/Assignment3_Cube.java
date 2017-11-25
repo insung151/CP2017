@@ -93,7 +93,7 @@ public class Assignment3_Cube {
 			v[0] = side[arr[0]-1].getCol(loc);
 			v[1] = side[arr[1]-1].getRow(size-loc+1);
 			v[2] = side[arr[2]-1].getCol(size-loc+1);
-			v[3] = side[arr[3]-1].getRow(loc);
+  			v[3] = side[arr[3]-1].getRow(loc);
 			if ((sideNum==5 && dir.equals("d")) || (sideNum==4 && dir.equals("r") || (sideNum==6 && dir.equals("u")) || (sideNum==2 && dir.equals("l"))))
 				k = -1;
 			else
