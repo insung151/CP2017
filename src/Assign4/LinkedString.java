@@ -37,6 +37,8 @@ public class LinkedString implements LinkedStringInterface {
 
     @Override
     public char charAt(int index) {
+        if (index < 0 || index >= length())
+            throw new IndexOutOfBoundsException();
         return charList.get(index);
     }
 
