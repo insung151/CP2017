@@ -3,59 +3,54 @@ package Assign4;
 public class Queue4_1 {
     private class Node{
 
-        private Object  data;
-        private Node nextNode;
+        private Object data;
+        private Node next;
 
         Node(Object data){
             this.data = data;
-            this.nextNode = null;
+            this.next = null;
         }
     }
 
-    private Node front;
-    private Node rear;
+    private Node head;
+    private Node tail;
 
     public Queue4_1(){
-        this.front = null;
-        this.rear = null;
+        this.head = null;
+        this.tail = null;
     }
 
     public boolean empty(){
-        return (front==null);
+        return (head==null);
     }
 
     public void insert(Object item){
 
         Node node = new Node(item);
-        node.nextNode = null;
+        node.next = null;
 
         if(empty()){
-
-            rear = node;
-            front = node;
-
+            tail = node;
+            head = node;
         }else{
-
-            rear.nextNode = node;
-            rear = node;
-
+            tail.next = node;
+            tail = node;
         }
     }
 
     public Object peek(){
         if(empty()) throw new ArrayIndexOutOfBoundsException();
-        return front.data;
+        return head.data;
     }
 
     public Object remove(){
 
         Object item = peek();
-        front = front.nextNode;
+        head = head.next;
 
-        if(front == null){
-            rear = null;
+        if(head == null){
+            tail = null;
         }
-
         return item;
     }
 

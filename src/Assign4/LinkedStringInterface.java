@@ -16,7 +16,6 @@ public interface LinkedStringInterface {
     int compareToIgnoreCase(LinkedStringInterface str);  int compareToIgnoreCase(String str);
     LinkedStringInterface concat(LinkedStringInterface str);
     LinkedStringInterface concat(String str);
-    int indexOf(char ch);
-    int indexOf(String str);
-    LinkedStringInterface replace(char oldChar, char newChar);
+    int indexOf(char ch);   int indexOf(String str);
+    LinkedStringInterface replace(char oc, char nc);
 }

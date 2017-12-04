@@ -2,7 +2,7 @@ package Assign4;
 
 public class Tester4_1 {
     public static void main(String[] args) {
-        Assignment4_1 a = new Assignment4_1("00001101111", "ABCDE");
+        Assignment4_1 a = new Assignment4_1("00010101111", "ABCDE");
         Node4_1 r = a.getRoot();
         //reports in bits
         System.out.println(preorder(r));
@@ -13,7 +13,6 @@ public class Tester4_1 {
         System.out.println(inorderLetter(r));
         System.out.println(postorderLetter(r));
 //        System.out.println(r.left.left.left.label+ " agbs");
-
     }
 
     public static String preorder(Node4_1 n) {

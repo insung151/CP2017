@@ -1,26 +1,53 @@
 package Assign4;
 
-/**
- * Created by insung151 on 11/21/17.
- */
 public class Assignment4_1 {
     public Node4_1 root;
     public Assignment4_1(String line1, String line2) {
         char[] charArr = line1.toCharArray();
-        consHelper(charArr, line2);
-//        System.out.println(line1);
+        constructor(line1, line2);
+//        consHelper(charArr, line2);
     }
     public Node4_1 getRoot() {
         return root;
     }
 
+    private void constructor(String line1, String line2){
+        int internal=0, j=0 ;
+        if (line1.length() == 0)
+            return;
+        root = new Node4_1();
+        Queue4_1 queue = new Queue4_1();
+        queue.insert(root);
+        while(!queue.empty()){
+            Node4_1 node = (Node4_1)queue.remove();
+            if (line1.charAt(j) == '0'){
+                node.character = line2.charAt(internal);
+                node.label = line1.charAt(j);
+                node.left = new Node4_1();
+                node.right = new Node4_1();
+                queue.insert(node.left);
+                queue.insert(node.right);
+                internal++;
+            }
+            else{
+                node.label= line1.charAt(j);
+            }
+            j++;
+        }
+    }
+    /*
     private void consHelper(char[] charArr, String line2){
         if (charArr.length == 0)
             return ;
-        if (charArr[0] == '0')
-            root = new Node4_1(charArr[0], line2.charAt(0));
-        else
-            root = new Node4_1(charArr[0],'1' );
+        if (charArr[0] == '0') {
+            root = new Node4_1();
+            root.character = charArr[0];
+            root.label = line2.charAt(0);
+        }
+        else {
+            root.character = charArr[0];
+            root.label = '1';
+        }
 
         Node4_1[] nodeArr = {root};
         int k = 0;
@@ -59,4 +86,5 @@ public class Assignment4_1 {
         }
         return newNodes;
     }
+    */
 }

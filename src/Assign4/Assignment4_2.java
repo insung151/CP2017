@@ -4,8 +4,13 @@ public class Assignment4_2 {
     public Node4_1 root;
     public Assignment4_2(String s1, String s2) {
         root = consHelper1(root, s1.toCharArray());
-        constructorHelper2(root, s2);
+        Queue4_1 queue = new Queue4_1();
+        if (root != null) {
+            queue.insert(root);
+            constructorHelper2(s2, queue, 0);
+        }
     }
+
     public String report_bits_preorder() {
         return bits_preorder(root);
     }
@@ -18,6 +23,8 @@ public class Assignment4_2 {
     }
 
     private String bits_preorder(Node4_1 node){
+        if (node == null)
+            return "";
         String s = "";
         if (node.left != null)
             s+= "1";
@@ -61,6 +68,8 @@ public class Assignment4_2 {
     }
 
     private String preorder(Node4_1 node){
+        if (node == null)
+            return "";
         String s = "";
         s += node.label;
         if (node.left != null)
@@ -88,6 +97,8 @@ public class Assignment4_2 {
     }
 
     private Node4_1 consHelper1(Node4_1 node, char[] s1){
+        if (s1.length == 0)
+            return null;
         if (s1[s1.length-1] == 'x')
             return null;
         int k;
@@ -109,20 +120,16 @@ public class Assignment4_2 {
         return newNode;
     }
 
-    private void constructorHelper2(Node4_1 node, String s2){
-        if (node == null)
-            return;
-        Queue4_1 queue = new Queue4_1();
-        int k = 0;
-        queue.insert(node);
-        while (!queue.empty()){
-            Node4_1 cur = (Node4_1)queue.remove();
-            cur.label = s2.charAt(k);
-            k++;
-            if (cur.left != null)
-                queue.insert(cur.left);
-            if (cur.right != null)
-                queue.insert(cur.right);
-        }
+    private void constructorHelper2(String s2, Queue4_1 queue, int k){
+        if (queue.empty())
+            return ;
+        Node4_1 cur = (Node4_1)queue.remove();
+        cur.label = s2.charAt(k);
+        k++;
+        if (cur.left != null)
+            queue.insert(cur.left);
+        if (cur.right != null)
+            queue.insert(cur.right);
+        constructorHelper2(s2, queue, k);
     }
 }

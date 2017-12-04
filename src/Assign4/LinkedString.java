@@ -1,20 +1,18 @@
 package Assign4;
 
-import java.util.LinkedList;
-
 public class LinkedString implements LinkedStringInterface {
-    LinkedList<Character> charList;
+    private LinkedList4_3 charList;
     LinkedString(String str){
         //This will be frequently used.
         this(str.toCharArray());
     }
     LinkedString(char[] arr){
-        charList = new LinkedList<>();
+        charList = new LinkedList4_3();
         for (char c : arr)
             charList.add(c);
     }
     LinkedString(){
-        charList = new LinkedList<>();
+        charList = new LinkedList4_3();
     }
 
     @Override
@@ -30,8 +28,8 @@ public class LinkedString implements LinkedStringInterface {
     @Override
     public String toString(){
           String s = "";
-          for (char c : charList)
-              s += c;
+          for (int i=0; i<charList.size ;i++)
+              s += (char)charList.get(i).data;
           return s;
     }
 
@@ -39,12 +37,12 @@ public class LinkedString implements LinkedStringInterface {
     public char charAt(int index) {
         if (index < 0 || index >= length())
             throw new IndexOutOfBoundsException();
-        return charList.get(index);
+        return (char)charList.get(index).data;
     }
 
     @Override
     public int length() {
-        return charList.size();
+        return charList.size;
     }
 
     @Override
@@ -53,11 +51,10 @@ public class LinkedString implements LinkedStringInterface {
             throw new IndexOutOfBoundsException();
         char[] charArr = new char[endIndex-startIndex];
         int k = 0;
-        for (char c : charList.subList(startIndex, endIndex)){
-            charArr[k] = c;
+        for (int i=startIndex; i<endIndex; i++ ){
+            charArr[k] = (char)charList.get(i).data;
             k++;
         }
-
         return  new LinkedString(charArr);
     }
 
@@ -91,7 +88,7 @@ public class LinkedString implements LinkedStringInterface {
             return this.length() - str.length();
     }
 
-    @Override
+     @Override
     public int compareTo(String str) {
         return compareTo(new LinkedString(str));
     }
@@ -139,7 +136,7 @@ public class LinkedString implements LinkedStringInterface {
     @Override
     public int indexOf(char ch) {
         for (int i=0; i<length(); i++){
-            if (charList.get(i) == ch)
+            if ((char)charList.get(i).data == ch)
                 return i;
         }
         return -1;
@@ -159,7 +156,7 @@ public class LinkedString implements LinkedStringInterface {
     @Override
     public LinkedString replace(char oldChar, char newChar) {
         for (int i=0; i<length(); i++){
-            if (charList.get(i) == oldChar){
+            if ((char)charList.get(i).data == oldChar){
                 charList.remove(i);
                 charList.add(i,newChar);
             }
@@ -168,7 +165,7 @@ public class LinkedString implements LinkedStringInterface {
     }
 
     private void removeHelper(LinkedStringInterface substr){
-        if (!contains(substr))
+        if (!contains(substr)  || substr.compareTo("") == 0)
             return;
         for (int i=0; i <length(); i++){
             if (substring(i, i+substr.length()).compareTo(substr) == 0){
